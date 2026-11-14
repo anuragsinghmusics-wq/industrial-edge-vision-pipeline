@@ -1,11 +1,14 @@
 # Industrial Edge Vision: PPE & Safety Detection Pipeline
 ### High-Throughput Edge Perception, INT8 Model Quantization (-35% p95 Latency), and Automated Factory Evaluation Gates
 
+[![Live Demo](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://industrial-edge-vision-pipeline-aunyekockqwqfastl7s3df.streamlit.app/)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![YOLOv8s](https://img.shields.io/badge/architecture-YOLOv8s-brightgreen.svg)](https://github.com/ultralytics/ultralytics)
 [![ONNX Runtime](https://img.shields.io/badge/runtime-ONNX%20%2F%20TensorRT-green.svg)](https://onnxruntime.ai/)
 [![Docker](https://img.shields.io/badge/docker-ready-blue.svg)](https://www.docker.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+> 🚀 **Live Interactive Demo:** [https://industrial-edge-vision-pipeline-aunyekockqwqfastl7s3df.streamlit.app/](https://industrial-edge-vision-pipeline-aunyekockqwqfastl7s3df.streamlit.app/)
 
 An end-to-end, edge-optimized computer vision system designed for 24/7 industrial factory surveillance, real-time Personal Protective Equipment (PPE: Helmets, Vests, Boots, Gloves, Human) compliance monitoring, and automated pre-release evaluation gates.
 
@@ -148,14 +151,16 @@ python src/benchmark/latency_profiler.py --samples 1000
 python src/evaluation/eval_gate.py
 ```
 
-### 4. Launch Interactive Streamlit Dashboard
+### 4. Interactive Streamlit Dashboard
+- **Live Streamlit Cloud Demo:** [https://industrial-edge-vision-pipeline-aunyekockqwqfastl7s3df.streamlit.app/](https://industrial-edge-vision-pipeline-aunyekockqwqfastl7s3df.streamlit.app/)
+- **Or Run Locally:**
 ```bash
-streamlit run demo_app.py
+streamlit run app.py
 ```
 
 ### 5. Launch FastAPI Edge Microservice
 ```bash
-python app.py
+python api_server.py
 # Access healthcheck at http://localhost:8000/health
 # Access Prometheus metrics at http://localhost:8000/metrics
 ```
@@ -191,8 +196,8 @@ industrial-edge-vision-pipeline/
 │   ├── evaluation/              # Pre-release evaluation gates (7 failure modes)
 │   ├── pipeline/                # Decoupled async RTSP stream worker & detector
 │   └── quantization/            # ONNX INT8 PTQ pipeline
-├── app.py                       # FastAPI edge service with /metrics endpoint
-├── demo_app.py                  # Interactive Streamlit showcase dashboard
+├── app.py                       # Interactive Streamlit showcase dashboard (Cloud entrypoint)
+├── api_server.py                # FastAPI edge service with /metrics endpoint
 ├── benchmark_report.json        # Serialized benchmark metrics
 ├── train_and_export_ppe_yolov8.ipynb # Kaggle training notebook
 └── Dockerfile                   # Production edge container definition
