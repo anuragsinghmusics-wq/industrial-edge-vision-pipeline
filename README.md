@@ -58,7 +58,7 @@ The detector was fine-tuned on the industrial PPE surveillance benchmark (2,200 
 | **Precision** | 87.52% | 75.27% | 77.53% | **90.46%** |
 | **Recall** | 66.05% | 73.52% | 81.97% | **83.07%** |
 
-*Trained weights are serialized in [`models/best.pt`](models/best.pt) (22.5 MB) and exported to ONNX format in [`models/best.onnx`](models/best.onnx) (44.7 MB).*
+*Trained PyTorch weights are tracked in [`models/best.pt`](models/best.pt) (22.5 MB). The lightweight ONNX edge engine can be exported locally with `yolo export model=models/best.pt format=onnx` or via [`src/quantization/quantize_onnx_int8.py`](src/quantization/quantize_onnx_int8.py).*
 
 ### Training Metrics & Confusion Matrix
 <p align="center">
